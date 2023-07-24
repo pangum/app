@@ -1,3 +1,4 @@
 package app
 
-type Appid int64
+// Id 应用标识
+type Id int64
