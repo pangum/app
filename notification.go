@@ -1,0 +1,34 @@
+package app
+
+import (
+	"context"
+
+	"gitea/ruijc/storage/internal"
+
+	"gitlab.com/ruijc/app/core"
+	"gitlab.com/ruijc/app/notification"
+	"google.golang.org/protobuf/proto"
+)
+
+// Notification 通知
+type Notification struct {
+	client notification.RpcClient
+}
+
+func newNotification(connection *internal.Connection) *Notification {
+	return &Notification{
+		client: notification.NewRpcClient(connection),
+	}
+}
+
+func (n *Notification) Notify(ctx context.Context, id int64, data proto.Message) (err error) {
+	req := new(notification.NotifyReq)
+	req.Id = id
+	req.Type = core.NotificationType_NOTIFICATION_TYPE_MALEONN
+	req.ContentType = "application/protobuf"
+	if req.Data, err = proto.Marshal(data); nil == err {
+		_, err = n.client.Notify(ctx, req)
+	}
+
+	return
+}
