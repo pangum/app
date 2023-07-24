@@ -1,4 +1,4 @@
-module gitea/ruijc/app
+module gitea.com/ruijc/app
 
 go 1.19
 
