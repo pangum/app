@@ -20,9 +20,9 @@ func newApplication(connection *internal.Connection) *Application {
 	}
 }
 
-func (a *Application) Name(app int64) (name string, err error) {
+func (a *Application) Name(id Id) (name string, err error) {
 	req := new(application.GetReq)
-	req.Id = app
+	req.Id = int64(id)
 	if rsp, ce := a.client.Get(context.Background(), req); nil != ce {
 		err = ce
 	} else {

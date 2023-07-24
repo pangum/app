@@ -21,9 +21,9 @@ func newNotification(connection *internal.Connection) *Notification {
 	}
 }
 
-func (n *Notification) Notify(ctx context.Context, id int64, data proto.Message) (err error) {
+func (n *Notification) Notify(ctx context.Context, id Id, data proto.Message) (err error) {
 	req := new(notification.NotifyReq)
-	req.Id = id
+	req.Id = int64(id)
 	req.Type = core.NotificationType_NOTIFICATION_TYPE_MALEONN
 	req.ContentType = "application/protobuf"
 	if req.Data, err = proto.Marshal(data); nil == err {

@@ -20,17 +20,17 @@ func newConfig(connection *internal.Connection) *Config {
 	}
 }
 
-func (c *Config) Sms(ctx context.Context, appid int64) (string, error) {
-	return c.get(ctx, appid, core.ConfigType_CONFIG_TYPE_SMS)
+func (c *Config) Sms(ctx context.Context, id Id) (string, error) {
+	return c.get(ctx, id, core.ConfigType_CONFIG_TYPE_SMS)
 }
 
-func (c *Config) Bucket(ctx context.Context, appid int64) (string, error) {
-	return c.get(ctx, appid, core.ConfigType_CONFIG_TYPE_BUCKET)
+func (c *Config) Bucket(ctx context.Context, id Id) (string, error) {
+	return c.get(ctx, id, core.ConfigType_CONFIG_TYPE_BUCKET)
 }
 
-func (c *Config) get(ctx context.Context, appid int64, typ core.ConfigType) (value string, err error) {
+func (c *Config) get(ctx context.Context, id Id, typ core.ConfigType) (value string, err error) {
 	req := new(config.GetByAppReq)
-	req.App = appid
+	req.App = int64(id)
 	req.Type = typ
 	if rsp, ce := c.client.GetByApp(ctx, req); nil != ce {
 		err = ce
