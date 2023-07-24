@@ -3,7 +3,7 @@ package app
 import (
 	"context"
 
-	"gitea/ruijc/storage/internal"
+	"gitea.com/ruijc/app/internal"
 
 	"github.com/goexl/gox"
 	"gitlab.com/ruijc/app/application"
