@@ -1,4 +1,4 @@
-module gitea/ruijc/storage
+module gitea/ruijc/app
 
 go 1.19
 
