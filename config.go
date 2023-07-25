@@ -4,6 +4,8 @@ import (
 	"context"
 
 	"gitea.com/ruijc/app/internal"
+	"github.com/goexl/exc"
+	"github.com/goexl/gox/field"
 
 	"gitlab.com/ruijc/app/config"
 	"gitlab.com/ruijc/app/core"
@@ -34,8 +36,10 @@ func (c *Config) get(ctx context.Context, id Id, typ core.ConfigType) (value str
 	req.Type = typ
 	if rsp, ce := c.client.GetByApp(ctx, req); nil != ce {
 		err = ce
-	} else {
+	} else if nil != rsp.Config {
 		value = rsp.Config.Value
+	} else {
+		err = exc.NewFields("找不到配置信息", field.New("id", id), field.New("type", typ.String()))
 	}
 
 	return
