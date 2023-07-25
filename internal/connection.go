@@ -1,7 +1,11 @@
 package internal
 
 import (
-	"google.golang.org/grpc"
+	"github.com/pangum/grpc"
 )
 
-type Connection = grpc.ClientConn
+type Connection = grpc.Connection
+
+func newConnection(client *grpc.Client) *Connection {
+	return client.Connection("app")
+}
