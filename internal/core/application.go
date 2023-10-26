@@ -1,9 +1,7 @@
-package app
+package core
 
 import (
 	"context"
-
-	"gitea.com/ruijc/app/internal"
 
 	"github.com/goexl/gox"
 	"gitlab.com/ruijc/app/application"
@@ -14,7 +12,7 @@ type Application struct {
 	client application.RpcClient
 }
 
-func newApplication(connection *internal.Connection) *Application {
+func NewApplication(connection *Connection) *Application {
 	return &Application{
 		client: application.NewRpcClient(connection),
 	}

@@ -1,9 +1,7 @@
-package app
+package core
 
 import (
 	"context"
-
-	"gitea.com/ruijc/app/internal"
 
 	"gitlab.com/ruijc/app/core"
 	"gitlab.com/ruijc/app/notification"
@@ -15,7 +13,7 @@ type Notification struct {
 	client notification.RpcClient
 }
 
-func newNotification(connection *internal.Connection) *Notification {
+func NewNotification(connection *Connection) *Notification {
 	return &Notification{
 		client: notification.NewRpcClient(connection),
 	}

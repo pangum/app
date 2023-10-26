@@ -1,9 +1,8 @@
-package app
+package core
 
 import (
 	"context"
 
-	"gitea.com/ruijc/app/internal"
 	"github.com/goexl/exc"
 	"github.com/goexl/gox/field"
 
@@ -16,7 +15,7 @@ type Config struct {
 	client config.RpcClient
 }
 
-func newConfig(connection *internal.Connection) *Config {
+func NewConfig(connection *Connection) *Config {
 	return &Config{
 		client: config.NewRpcClient(connection),
 	}

@@ -1,4 +1,4 @@
-package internal
+package core
 
 import (
 	"github.com/pangum/grpc"
@@ -6,6 +6,6 @@ import (
 
 type Connection = grpc.Connection
 
-func newConnection(client *grpc.Client) *Connection {
+func NewConnection(client *grpc.Client) *Connection {
 	return client.Connection("app")
 }
