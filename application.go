@@ -1,7 +1,7 @@
 package app
 
 import (
-	"gitea.com/ruijc/app/internal/core"
+	"github.com/pangum/app/internal/core"
 )
 
 type Application = core.Application

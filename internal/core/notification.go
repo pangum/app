@@ -4,18 +4,18 @@ import (
 	"context"
 
 	"gitlab.com/ruijc/app/core"
-	"gitlab.com/ruijc/app/notification"
+	"gitlab.com/ruijc/app/protocol"
 	"google.golang.org/protobuf/proto"
 )
 
 // Notification 通知
 type Notification struct {
-	client notification.RpcClient
+	client protocol.NotificationClient
 }
 
 func NewNotification(connection *Connection) *Notification {
 	return &Notification{
-		client: notification.NewRpcClient(connection),
+		client: protocol.NewNotificationClient(connection),
 	}
 }
 

@@ -5,7 +5,3 @@ import (
 )
 
 type Connection = grpc.Connection
-
-func NewConnection(client *grpc.Client) *Connection {
-	return client.Connection("app")
-}

@@ -1,12 +1,12 @@
 package app
 
 import (
-	"gitea.com/ruijc/app/internal/plugin"
+	"github.com/pangum/app/internal/plugin"
 	"github.com/pangum/pangu"
 )
 
 func init() {
-	creator := new(plugin.Creator)
+	creator := new(plugin.Constructor)
 	pangu.New().Get().Dependency().Put(
 		creator.Connection,
 		creator.Application,
